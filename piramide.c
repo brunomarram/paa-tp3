@@ -130,9 +130,9 @@ void maximoProgramacaoDinamica(Piramide *piramide) {
 
 int memo(Hash *tabela, Piramide *piramide, int i, int j){
 
-    insereHash(tabela, maximoMemoizationAux(tabela, piramide, i, j));
+    insereHash(*tabela, maximoMemoizationAux(tabela, piramide, i, j));
 //    printf("%d, %d \n", , piramide->matriz[i][j]);
-    return buscaHash(tabela, piramide->matriz[i][j]);
+    return buscaHash(*tabela, piramide->matriz[i][j]);
 }
 
 int maximoMemoizationAux(Hash *tabela, Piramide *piramide, int i, int j){
