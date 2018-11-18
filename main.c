@@ -3,10 +3,12 @@
 
 #include "file.h"
 
-void menuSecundario(Piramide *piramide){
+void menuSecundario(Piramide *piramide)
+{
     int metodo;
 
-    do {
+    do
+    {
         printf("\nDigite um metodo de resolucao\n\n");
         printf("1 - Recursivo\n");
         printf("2 - De tras pra frente\n");
@@ -15,28 +17,34 @@ void menuSecundario(Piramide *piramide){
         getchar();
     } while (metodo != 1 && metodo != 2 && metodo != 3);
 
-    if(metodo == 1)
-        printf("Valor do maior caminho encontrado: %d\n", maximoRecursivo(piramide));
-    else if(metodo == 2)
-        maximoProgramacaoDinamica(piramide);
+    if (metodo == 1)
+        maximoRecursivo(piramide);
+    else if (metodo == 2)
+        maximoTrasPraFrente(piramide);
     else
-        printf("Valor do maior caminho encontrado: %d\n", maximoMemoization(piramide));
+        maximoMemoization(piramide);
 }
 
-void menuPrincipal() {
+void menuPrincipal(int analise)
+{
     int opc;
     Piramide piramide;
 
     system("clear");
 
-    while (1) {
-        do {
+    while (1)
+    {
+        do
+        {
             system("clear");
-            printf("Bem vindo ao Resolvedor de pirâmides\n\n");
+            if (analise)
+                printf("Bem vindo ao Resolvedor das piramides de Gize (Modo Analise)\n\n");
+            else
+                printf("Bem vindo ao Resolvedor das piramides de Gize\n\n");
             printf("Escolha um dos niveis abaixo:\n\n");
-            printf("1 - Nivel 1\n");
-            printf("2 - Nivel 2\n");
-            printf("3 - Nivel 3\n");
+            printf("1 - Miquerinos\n");
+            printf("2 - Quefren\n");
+            printf("3 - Queops (Grande Piramide)\n");
             printf("0 - Sair\n\n");
             printf("> ");
             scanf("%d", &opc);
@@ -48,9 +56,10 @@ void menuPrincipal() {
             }
         } while (opc < 0 || opc > 3);
 
-        switch (opc) {
+        switch (opc)
+        {
         case 1:
-            system("clear");            
+            system("clear");
             readFile("piramide1.txt", &piramide);
             imprimePiramide(piramide);
             menuSecundario(&piramide);
@@ -87,8 +96,8 @@ void menuPrincipal() {
     }
 }
 
-int main(int argc, char** argv) {
-    menuPrincipal();
+int main(int argc, char **argv)
+{
+    menuPrincipal(0);
     return (EXIT_SUCCESS);
 }
-
