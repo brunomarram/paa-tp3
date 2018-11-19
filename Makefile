@@ -4,5 +4,7 @@ mac:
 	gcc -Wall -g  *.c -o exec
 clean:
 	rm exec
+analysis:
+	./exec analysis	
 run:
-	./exec
+	./exec run
